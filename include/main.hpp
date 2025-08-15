@@ -8,6 +8,7 @@ class EditAccountID : public cocos2d::CCNode {
 protected:
 	CREATE_FUNC(EditAccountID);
 public:
+	std::string m_implID;
 	std::vector<std::function<void(int)>> m_onNewID;
 	std::vector<std::function<void(geode::TextInput*)>> m_onInputSetup;
 	std::vector<std::function<void(cocos2d::CCLabelBMFont*)>> m_onLabelSetup;
@@ -17,10 +18,10 @@ public:
 	std::string m_inputLabel = "Account ID:\n \n \n \n ";
 	// Get or create shared instance of EditAccountID
 	static EditAccountID* get() {
-		geode::Ref instance = geode::cast::typeinfo_cast<EditAccountID*>(GameManager::get()->getUserObject("EditAccountID"));
+		geode::Ref instance = geode::cast::typeinfo_cast<EditAccountID*>(GameManager::get()->getUserObject("user95401.edit-account-id"));
 		if (!instance) {
 			instance = EditAccountID::create();
-			GameManager::get()->setUserObject("EditAccountID", instance);
+			GameManager::get()->setUserObject("user95401.edit-account-id", instance);
 		}
 		return instance;
 	}
