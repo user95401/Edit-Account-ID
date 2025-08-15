@@ -13,6 +13,10 @@ class $modify(EditAccountID_FLAlertLayer, FLAlertLayer) {
 	}
 	$override void show() {
 		FLAlertLayer::show();
+
+	    EditAccountID::get()->m_implID = EditAccountID::get()->m_implID.empty() ? geode::getMod()->getID() : EditAccountID::get()->m_implID;
+	    if (EditAccountID::get()->m_implID != geode::getMod()->getID()) return; //already have impl from other mod
+		
 		if (Ref casted = typeinfo_cast<AccountLoginLayer*>(this)) {
 			// callback
 			for (auto& a : EditAccountID::get()->m_onAccountLoginLayerShow) if (a) a(casted);
